@@ -1,4 +1,5 @@
 from API_KEY import FTC_KEY
+from progresBar import progressBar
 import pandas as pd
 import numpy as np
 import requests
@@ -22,25 +23,29 @@ def getInfo(what_see:str, season:int, eventCode:str) -> pd.DataFrame:
     \tReturns a DataFrame of the response of the API
     '''
 
+    os.system("cls")
+    os.system("clear")
+    print("Retreaving data...")
+
     header = {
         "Authorization":f"Basic {FTC_KEY}"
     }
 
     if(what_see == "SD"):
-        response = requests.get("http://ftc-api.firstinspires.org/v2.0/2025/scores/MXTOQ/qual", headers=header)
+        response = requests.get(f"http://ftc-api.firstinspires.org/v2.0/{season}/scores/{eventCode}/qual", headers=header)
         if(response.status_code != 200):
             os.system("cls")
             os.system("clear")
             print(f"Failed API with code {response.status_code}...\nTrying again")
             time.sleep(5)
-            response = requests.get("http://ftc-api.firstinspires.org/v2.0/2025/scores/MXTOQ/qual", headers=header)
+            response = requests.get(f"http://ftc-api.firstinspires.org/v2.0/{season}/scores/{eventCode}/qual", headers=header)
         return pd.DataFrame.from_dict(response.json())
     else:
-        response = requests.get("http://ftc-api.firstinspires.org/v2.0/2025/matches/MXTOQ?tournamentLevel=qual", headers=header)
+        response = requests.get(f"http://ftc-api.firstinspires.org/v2.0/{season}/matches/{eventCode}?tournamentLevel=qual", headers=header)
         if(response.status_code != 200):
             os.system("cls")
             os.system("clear")
             print(f"Failed API with code {response.status_code}...\nTrying again")
             time.sleep(5)
-            response = requests.get("http://ftc-api.firstinspires.org/v2.0/2025/matches/MXTOQ?tournamentLevel=qual", headers=header)
+            response = requests.get(f"http://ftc-api.firstinspires.org/v2.0/{season}/matches/{eventCode}?tournamentLevel=qual", headers=header)
         return pd.DataFrame.from_dict(response.json())

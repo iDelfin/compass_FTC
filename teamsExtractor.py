@@ -1,5 +1,6 @@
 import pandas as pd
 import requests
+import os
 
 def teams_extract(matches_respons):
     '''
@@ -14,6 +15,11 @@ def teams_extract(matches_respons):
     - **teams_df** *DataFrame*\n
     \tA dataframe that will contains the 4 columns with their station
     '''
+
+    os.system("cls")
+    os.system("clear")
+    print("Extracting teams and stations...")
+
     response_pd = matches_respons.copy()
     response_pd = response_pd["matches"].apply(pd.Series)
     teams = response_pd["teams"].apply(pd.Series)
