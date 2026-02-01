@@ -1,4 +1,5 @@
 import pandas as pd
+import time
 import os
 
 import fetchData
@@ -33,7 +34,7 @@ def data_retreval(season: int, region_code: str) -> pd.DataFrame:
 def grouping_by_input(table:pd.DataFrame, column:str) -> pd.DataFrame:
     return table.groupby("Team", as_index=False, sort=True).mean().sort_values(column, ascending=False)
 
-def main_menu():
+def main_menu_input():
 
     # Regional toluca: MXTOQ
 
@@ -73,3 +74,12 @@ Please write the letter
         print(grouping_by_input(all_teams_table, column_input_dict(group_input)).head())
 
     
+def main_menu_noInput(SEASON:int, REGION_CODE:str, WHAT_TO_SEE:str):
+    all_teams_table = data_retreval(SEASON, REGION_CODE)
+    print(grouping_by_input(all_teams_table, column_input_dict(WHAT_TO_SEE)).head())
+    
+def run_type_decider():
+    if(os.environ["SEASON"] == None):
+        main_menu_input()
+    else:
+        main_menu_noInput(os.environ["SEASON"], os.environ["REGION_CODE"], os.environ["WHAT_TO_SEE"])
