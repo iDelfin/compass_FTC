@@ -1,7 +1,7 @@
 import menuManager
 
 def main():
-    menuManager.main_menu()
+    menuManager.run_type_decider()
 
 if __name__ == "__main__":
     main()
