@@ -27,8 +27,12 @@ def getInfo(what_see:str, season:int, eventCode:str) -> pd.DataFrame:
     os.system("clear")
     print("Retreaving data...")
 
+    # header = {
+    #     "Authorization":f"Basic {FTC_KEY}"
+    # }
+
     header = {
-        "Authorization":f"Basic {FTC_KEY}"
+        "Authorization":f"Basic {os.environ["FTC_KEY"]}"
     }
 
     if(what_see == "SD"):
