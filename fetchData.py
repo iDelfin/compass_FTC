@@ -1,4 +1,4 @@
-from API_KEY import FTC_KEY
+#from API_KEY import FTC_KEY
 from progresBar import progressBar
 import pandas as pd
 import numpy as np
