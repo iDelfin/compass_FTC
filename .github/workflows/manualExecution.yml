@@ -1,0 +1,44 @@
+name: obtain top teams
+
+on:
+  workflow_dispatch:
+    inputs:
+      GROUPED:
+        description: |
+          --- AUTO ---
+          A) autoClassifiedArtifacts
+          B) autoOverflowArtifacts
+          C) Leave
+          --- Teleop ---
+          D) teleopClassifiedArtifacts
+          E) teleopOverflowArtifacts
+          F) Endgame
+          --- Extra ---
+          G) movementRP
+          H) goalRP
+          I) patternRP"
+env:
+  SEASON: ${{ vars.SEASON }}
+  REGION_CODE: ${{ vars.REGION_CODE }}
+  WHAT_TO_SEE: ${{ inputs.GROUPED }}
+  FTC_KEY: ${{ secrets.FTC_KEY }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: execute py script
+        run: python main.py
