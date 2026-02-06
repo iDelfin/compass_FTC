@@ -79,7 +79,7 @@ def main_menu_noInput(SEASON:int, REGION_CODE:str, WHAT_TO_SEE:str):
     print(grouping_by_input(all_teams_table, column_input_dict(WHAT_TO_SEE)).head())
     
 def run_type_decider():
-    if(os.environ["SEASON"] == None):
+    if(os.environ.get("SEASON") == None):
         main_menu_input()
     else:
-        main_menu_noInput(os.environ["SEASON"], os.environ["REGION_CODE"], os.environ["WHAT_TO_SEE"])
+        main_menu_noInput(os.environ.get("SEASON"), os.environ.get("REGION_CODE"), os.environ.get("WHAT_TO_SEE"))
