@@ -3,6 +3,7 @@ name: obtain top Artefact Clasefied Teleop
 on:
   schedule:
     - cron: '0 13 * * *'
+  workflow_dispatch:
 env:
   SEASON_VAR: ${{ vars.SEASON }}
   REGION_VAR: ${{ vars.REGION_CODE }}
