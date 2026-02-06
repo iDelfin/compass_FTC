@@ -8,6 +8,7 @@ env:
   SEASON_VAR: ${{ vars.SEASON }}
   REGION_VAR: ${{ vars.REGION_CODE }}
   OUTPUT_VAR: ${{ vars.WHAT_TO_SEE }}
+  FTC_KEY: ${{ secrets.FTC_KEY }}
 
 jobs:
   build:
