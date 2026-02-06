@@ -5,18 +5,32 @@ on:
     inputs:
       GROUPED:
         description: |
-          --- AUTO ---
-          A) autoClassifiedArtifacts
-          B) autoOverflowArtifacts
-          C) Leave
-          --- Teleop ---
-          D) teleopClassifiedArtifacts
-          E) teleopOverflowArtifacts
-          F) Endgame
-          --- Extra ---
-          G) movementRP
-          H) goalRP
-          I) patternRP"
+          --- AUTO ---.
+          A) autoClassifiedArtifacts.
+          B) autoOverflowArtifacts.
+          C) Leave.
+          --- Teleop ---.
+          D) teleopClassifiedArtifacts.
+          E) teleopOverflowArtifacts.
+          F) Endgame.
+          --- Extra ---.
+          G) movementRP.
+          H) goalRP.
+          I) patternRP.
+        required: true
+        default: 'D'
+        type: choice
+        options:
+        - A
+        - B
+        - C
+        - D
+        - E
+        - F
+        - G
+        - H
+        - I
+        
 env:
   SEASON: ${{ vars.SEASON }}
   REGION_CODE: ${{ vars.REGION_CODE }}
