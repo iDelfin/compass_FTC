@@ -5,9 +5,9 @@ on:
     - cron: '0 13 * * *'
   workflow_dispatch:
 env:
-  SEASON_VAR: ${{ vars.SEASON }}
-  REGION_VAR: ${{ vars.REGION_CODE }}
-  OUTPUT_VAR: ${{ vars.WHAT_TO_SEE }}
+  SEASON: ${{ vars.SEASON }}
+  REGION_CODE: ${{ vars.REGION_CODE }}
+  WHAT_TO_SEE: ${{ vars.WHAT_TO_SEE }}
   FTC_KEY: ${{ secrets.FTC_KEY }}
 
 jobs:
