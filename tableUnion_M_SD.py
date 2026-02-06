@@ -22,7 +22,7 @@ def union_match_sd(red_SD_pd, blue_SD_pd, robots):
     Blue1_pd = blue_concat[["Blue1", "autoClassifiedArtifacts", "autoOverflowArtifacts", "robot1Auto", "teleopClassifiedArtifacts", "teleopOverflowArtifacts", "robot1Teleop", "foulPointsCommitted", "movementRP", "goalRP", "patternRP"]]
     Blue1_pd.rename({"Blue1":"Team", "robot1Auto":"Leave", "robot1Teleop":"Base"}, axis=1, inplace=True)
 
-    Blue2_pd = blue_concat[["Blue2", "autoClassifiedArtifacts", "autoOverflowArtifacts", "robot1Auto", "teleopClassifiedArtifacts", "teleopOverflowArtifacts", "robot1Teleop", "foulPointsCommitted", "movementRP", "goalRP", "patternRP"]]
+    Blue2_pd = blue_concat[["Blue2", "autoClassifiedArtifacts", "autoOverflowArtifacts", "robot2Auto", "teleopClassifiedArtifacts", "teleopOverflowArtifacts", "robot2Teleop", "foulPointsCommitted", "movementRP", "goalRP", "patternRP"]]
     Blue2_pd.rename({"Blue2":"Team", "robot1Auto":"Leave", "robot1Teleop":"Base"}, axis=1, inplace=True)
     
     allteams = pd.concat([Red1_pd, Red2_pd, Blue1_pd, Blue2_pd], axis=0)

@@ -32,7 +32,7 @@ def getInfo(what_see:str, season:int, eventCode:str) -> pd.DataFrame:
     # }
 
     header = {
-        "Authorization":f"Basic {os.environ["FTC_KEY"]}"
+        "Authorization":f"Basic {os.environ.get('FTC_KEY')}"
     }
 
     if(what_see == "SD"):
