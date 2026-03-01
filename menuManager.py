@@ -34,14 +34,14 @@ def data_retreval(season: int, region_code: str) -> pd.DataFrame:
 def grouping_by_input(table:pd.DataFrame, column:str) -> pd.DataFrame:
     return table.groupby("Team", as_index=False, sort=True).mean().sort_values(column, ascending=False)
 
-def main_menu_input():
+def main_menu_input_ftc():
 
     # Regional toluca: MXTOQ
 
-    latest_season = 2025
+    ftc_latest_season = 2025
     print(f"{'=' * 30}\nFTC data retreval by 6606\n{'=' * 30}")
     season_in = int(input(f"Please entre the season to retreve data from\nNote: Use the first year of the season Ex. for season 2025-2026 enter 2025\n> "))
-    while(season_in > latest_season):
+    while(season_in > ftc_latest_season):
         season_in = int(input(f"{'!' * 10}Invalid year{'!' * 10}\nPlease entre the season to retreve data from\nNote: Use the first year of the season Ex. for season 2025-2026 enter 2025\nError note: remember that the latest season is {latest_season}\n> "))
     region_code_in = input(f"Please entre the region code\nNote: You can find this code af FTC Web event\n> ")
 
@@ -71,8 +71,7 @@ Please write the letter
         if(group_input == "X"):
             exit()
         print(all_teams_table.columns)
-        print(grouping_by_input(all_teams_table, column_input_dict(group_input)).head())
-
+        print(grouping_by_input(all_teams_table, column_input_dict(group_input)).head())        
     
 def main_menu_noInput(SEASON:int, REGION_CODE:str, WHAT_TO_SEE:str):
     all_teams_table = data_retreval(SEASON, REGION_CODE)
@@ -80,6 +79,6 @@ def main_menu_noInput(SEASON:int, REGION_CODE:str, WHAT_TO_SEE:str):
     
 def run_type_decider():
     if(os.environ.get("SEASON") == None):
-        main_menu_input()
+        main_menu_input_ftc()
     else:
         main_menu_noInput(os.environ.get("SEASON"), os.environ.get("REGION_CODE"), os.environ.get("WHAT_TO_SEE"))

@@ -1,8 +1,9 @@
 import pandas as pd
 from teamExtractorFRC import teams_involved_FRC
 from scoreDetailExtractFRC import SD_extractor_FRC
+from requestDataFRC import teams_request, scoreDetail_request
 
-def data_resume_FRC():
+def data_resume_FRC(region_code):
     station_number = {
         "Red1" : "Robot1",
         "Red2" : "Robot2",
@@ -14,8 +15,8 @@ def data_resume_FRC():
 
     robots_info_df = []
 
-    robots_FRC = teams_involved_FRC(```Put stuff```)
-    df_red_score, df_blue_score = SD_extractor_FRC(```Put stuff```)
+    robots_FRC = teams_involved_FRC(teams_request(region_code))
+    df_red_score, df_blue_score = SD_extractor_FRC(scoreDetail_request(region_code))
 
     for station in robots_FRC.columns:
         if (station.find("Red") != -1):
