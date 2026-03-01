@@ -35,4 +35,17 @@ def data_resume_FRC(region_code):
                 inplace=True)
             robots_info_df.append(robot_info_colomn_name_station)
     final_specific_data_teams = pd.concat(robots_info_df, axis=0)
-    return final_specific_data_teams
+    final_specific_data_teams.replace({
+        "autoTower":{
+            "None":0,
+            "Level1":15
+        },
+        "endGameTower":{
+            "None":0,
+            "Level1":10,
+            "Level2":20,
+            "Level3":30
+        }
+    }, inplace=True)
+    grouped_value_data_teams = final_specific_data_teams.groupby("team", as_index=False).mean().sort_values("totalPoints", ascending=False)
+    return grouped_value_data_teams.reset_index(drop=True)
