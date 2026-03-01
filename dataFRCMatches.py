@@ -35,4 +35,4 @@ def data_resume_FRC(region_code):
                 inplace=True)
             robots_info_df.append(robot_info_colomn_name_station)
     final_specific_data_teams = pd.concat(robots_info_df, axis=0)
-    final_specific_data_teams
+    return final_specific_data_teams
