@@ -104,12 +104,15 @@ Please write the letter
         print(all_teams_table.columns)
         print(grouping_by_input(all_teams_table, column_input_dict(group_input)).head())        
     
-def main_menu_noInput(SEASON:int, REGION_CODE:str, WHAT_TO_SEE:str):
+def main_menu_noInput_ftc(SEASON:int, REGION_CODE:str, WHAT_TO_SEE:str):
     all_teams_table = data_retreval(SEASON, REGION_CODE)
     print(grouping_by_input(all_teams_table, column_input_dict(WHAT_TO_SEE)).head())
     
+def main_menu_noInput_frc(SEASON, REGION_CODE):
+    print(data_resume_FRC(REGION_CODE))
+    
 def run_type_decider():
-    if(os.environ.get("SEASON_GAME") == None):
+    if(os.environ.get("PROGRAM_FIRST") == None):
         print(f'''
 ======================================
         Data Retreval 6606
@@ -122,4 +125,7 @@ To start please use one of the two options:''')
         else:
             main_menu_input_frc()
     else:
-        main_menu_noInput(os.environ.get("SEASON_GAME"), os.environ.get("REGION_CODE"), os.environ.get("WHAT_TO_SEE"))
+        if os.environ.get("PROGRAM_FIRST") == "FTC":
+            main_menu_noInput_ftc(os.environ.get("SEASON_GAME"), os.environ.get("REGION_CODE"), os.environ.get("WHAT_TO_SEE"))
+        else:
+            main_menu_noInput_frc(os.environ.get("SEASON_GAME"), os.environ.get("REGION_CODE"))
