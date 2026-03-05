@@ -1,10 +1,11 @@
-from API_KEY import FRC_KEY
+#from API_KEY import FRC_KEY
 import pandas as pd
 import requests
+import os
 
 def teams_request(region_code):
     header_FRC = {
-        "Authorization":f"Basic {FRC_KEY}"
+        "Authorization":f"Basic {os.environ.get('FRC_KEY')}"
     }
     
     response_teams = requests.get(f"https://frc-api.firstinspires.org/v3.0/2026/matches/{region_code}?tournamentLevel=Qualification", headers=header_FRC)
@@ -15,7 +16,7 @@ def teams_request(region_code):
     
 def scoreDetail_request(region_code):
     header_FRC = {
-        "Authorization":f"Basic {FRC_KEY}"
+        "Authorization":f"Basic {os.environ.get('FRC_KEY')}"
     }
     
     response_SD = requests.get(f"https://frc-api.firstinspires.org/v3.0/2026/scores/{region_code}/Qualification", headers=header_FRC)
