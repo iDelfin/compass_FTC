@@ -2,7 +2,7 @@ name: Obtain FRC info
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '0 23 * * *'
   workflow_dispatch:
 env:
   PROGRAM_FIRST: ${{ vars.PROGRAM_FIRST }}
